@@ -1,0 +1,29 @@
+{
+  "name": "Treasure-Chest",
+  "version": "0.0.0",
+  "description": "A best practices frontend toolkit, all wrapped up in a chestjs .chest",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Truemedia/Treasure-Chest.git"
+  },
+  "keywords": [
+    "chestjs",
+    "build",
+    "tools",
+    "toolkit",
+    "gulp",
+    "bower",
+    "compiler",
+    "umd"
+  ],
+  "author": "Wade Penistone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Truemedia/Treasure-Chest/issues"
+  },
+  "homepage": "https://github.com/Truemedia/Treasure-Chest"
+}
