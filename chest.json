@@ -5,7 +5,7 @@
   "scripts": {
     "init": {
       "usage": "Install this tool (needed to delete .git folder to avoid errors)",
-      "run": "rm .git"
+      "run": "cd .chest && rm .git"
     }
   }
 }
