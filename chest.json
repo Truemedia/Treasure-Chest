@@ -1,0 +1,11 @@
+{
+  "name": "Treasure-Chest",
+  "description": "A best practices frontend toolkit, all wrapped up in a chestjs .chest",
+  "version": "0.0.0",
+  "scripts": {
+    "init": {
+      "usage": "Install this tool (needed to delete .git folder to avoid errors)",
+      "run": "rm .git"
+    }
+  }
+}
