@@ -1,5 +1,6 @@
 // Gulp core and plugins loader
 var gulp = require('gulp'),
+	gutil = require('gulp-util'),
 	$ = require('gulp-load-plugins')();
 
 // Command line help
@@ -10,8 +11,11 @@ var jsonlint = require('gulp-json-lint'),
 	cover = require('gulp-coverage'),
 	spritesmith = require('gulp.spritesmith'),
 	browserSync = require('browser-sync'),
-	uncss = require('gulp-uncss'),
-	glob = require('glob');
+	glob = require('glob'),
+	sass = require('gulp-ruby-sass');
+
+// Config
+var theme = 'default';
 
 /* Default task */
 gulp.task('default', 'Run automated development environment', ['browser-sync'], function()
@@ -66,16 +70,18 @@ gulp.task('scripts', 'Compile all frontend scripts into a single file', function
         .pipe(gulp.dest('.'));
 });
 
-/* Generate CSS files from grouped LESS files */
-gulp.task('css', 'Compile LESS files into CSS', function()
+/* Render CSS files from pre-processing and post-processing */
+gulp.task('css', 'Render CSS files using pre-processing and post-processing', function()
 {
-	console.log("Rendering optimized internal visual mechanics");
-	return gulp.src('./themes/default/assets/less/*.less')
-	.pipe( $.concat('style.less') )
-	.pipe( $.less() )
-	.pipe( gulp.dest('./themes/default/assets/css') )
-	.pipe( $.filter('**/*.css') ) // Filtering stream to only css files
-    .pipe(browserSync.reload({stream:true}));
+	gutil.log( gutil.colors.magenta('Rendering CSS files using pre-processing and post-processing') );
+	return gulp.src([
+			'./app/base/themes/default/core/palette.scss'
+		])
+		// .pipe( $.less() )
+		.pipe( sass() )
+		.pipe( gulp.dest('./css') )
+		// .pipe( $.filter('**/*.css') ) // Filtering stream to only css files
+	 //    .pipe(browserSync.reload({stream:true}));
 });
 
 /* JSHint */
@@ -142,4 +148,17 @@ gulp.task('uncss', 'Clear out unused CSS selectors and rules from a stylesheet',
             ignore: ['#always_available_id']
         }))
         .pipe(gulp.dest('./out'));
+});
+
+
+gulp.task('json2yaml', function()
+{
+	gulp.src([
+			'./app/base/config/routes.json'
+		])
+    	.pipe( $.convert({
+    		from: 'json',
+     		to: 'yml'
+    	}))
+    	.pipe( gulp.dest('./app/base/config/') );
 });
