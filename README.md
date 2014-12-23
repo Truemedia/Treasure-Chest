@@ -3,10 +3,7 @@ Treasure-Chest
 
 A best practices frontend toolkit, all wrapped up in a chestjs .chest
 
+To install rename your sites/web directory to -old and run
+`git clone https://github.com/Truemedia/Treasure-Chest.git sites`
 
-To install git clone this repo into the root directory of your project,
-and run chest run init.
-
-
-Styling guidelines
-- Compiles LESS or SASS loosely based on MVCSS based on theme directories
+Once this is done you can drag any sites in your sites-old directory into the new directory and you now have access to a lot of tools for all your sites.
