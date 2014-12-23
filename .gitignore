@@ -1,4 +1,13 @@
+# site folders
+**/
+!.chest/
+
+# chest
 /bower.json
 /build.js
 /gulpfile.js
 /package.json
+/.editorconfig
+/.bowerrc
+/.jshintrc
+/chest.json
