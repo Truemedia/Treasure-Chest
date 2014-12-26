@@ -1,6 +1,7 @@
 # site folders
 **/
 !.chest/
+!tasks/
 
 # chest
 /bower.json

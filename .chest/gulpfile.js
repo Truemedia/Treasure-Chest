@@ -12,10 +12,11 @@ var jsonlint = require('gulp-json-lint'),
 	spritesmith = require('gulp.spritesmith'),
 	browserSync = require('browser-sync'),
 	glob = require('glob'),
-	sass = require('gulp-ruby-sass');
+	sass = require('gulp-sass');
 
 // Config
 var theme = 'default';
+var config = require('./../tasks/config.json');
 
 /* Default task */
 gulp.task('default', 'Run automated development environment', ['browser-sync'], function()
@@ -27,6 +28,11 @@ gulp.task('default', 'Run automated development environment', ['browser-sync'], 
 		'./maps/scraproom/tiles/*.png',
 		'./themes/default/assets/less/source.less'
 		], ['sprite', 'css']);
+});
+
+gulp.task('config_test', 'test', function()
+{
+	console.log(config);
 });
 
 /* Verify and publish any changes to the codebase */
