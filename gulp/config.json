@@ -1,0 +1,65 @@
+{
+	"tasks":
+	{
+		"browser-sync":
+		{
+			"src": ["*.css"],
+			"dest": "./"
+		},
+		"css":
+		{
+			"src": ["./app/base/themes/default/core/palette.scss"],
+			"dest": "./css"
+		},
+		"default":
+		{
+			"src": ["./maps/scraproom/tiles/*.png", "./themes/default/assets/less/source.less"]
+		},
+		"json2yaml":
+		{
+			"src": ["./app/base/config/routes.json"],
+			"dest": "./app/base/config/"
+		},
+		"jsonlint":
+		{
+			"src": ["./blueprints/**/*.json", "./config/**/*.json", "./maps/**/*.json", "./packages/**/*.json"]
+		},
+		"lint":
+		{
+			"src": ["./controllers/*.js", "./regeneration/*.js", "./gameobjects/*.js", "./packages/**/*.js", "./*.js", "!./bundle.js"]
+		},
+		"publish":
+		{
+			"src": "./*"
+		},
+		"scripts":
+		{
+			"src": "build.js",
+			"dest": "bundle.js"
+		},
+		"sprite":
+		{
+			"src": "maps/scraproom/tiles/*.png",
+			"dest":
+			{
+				"img": "tileset.png",
+				"css": "stylesheet.less",
+				"dir": "maps/scraproom/"
+			}
+		},
+		"uncss":
+		{
+			"src":
+			{
+				"css": "uncss_test/style.css",
+				"tpl": "./packages/**/templates/*.mustache"
+			},
+			"dest": "./out"
+		},
+		"unit":
+		{
+			"src": ["regeneration/tests/*.js", "packages/**/tests/*.js"],
+			"dest": "coverage.html"
+		}
+	}
+}

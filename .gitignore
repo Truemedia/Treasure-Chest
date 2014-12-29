@@ -1,7 +1,17 @@
 # site folders
 **/
+
+# tools
 !.chest/
-!tasks/
+!gulp/
+!gulp/tasks/
+
+# temp
+.coverdata/
+/.coverrun
+
+# logs
+/npm-debug.log
 
 # chest
 /bower.json
