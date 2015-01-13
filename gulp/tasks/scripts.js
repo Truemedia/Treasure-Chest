@@ -1,18 +1,32 @@
 // Gulp core and plugins
 var gulp = require('gulp'),
 	gutil = require('gulp-util'),
-	browserify = require('gulp-browserify'),
-	concat = require('gulp-concat');
+	filelog = require('gulp-filelog');
+	browserify = require('browserify'),
+	source = require('vinyl-source-stream'),
+	buffer = require('vinyl-buffer');
 
 // Settings
-config = require('./../config.json');
+var config = require('./../config.json');
+
+// Pipes
+var js = require('./../pipes/js');
 
 /* Compile and compress frontend scripts */
 gulp.task('scripts', 'Compile all frontend scripts into a single file', function()
 {
-    // Single entry point to browserify
-    gulp.src(config.tasks.scripts.src)
-        .pipe( browserify({ insertGlobals : true }) )
-        .pipe( concat(config.tasks.scripts.dest) )
-        .pipe( gulp.dest('.') );
+	var sourcemaps = false;
+	var bundler = browserify({ entries: [config.tasks.scripts.src], debug: sourcemaps });
+
+    var bundle = function()
+	{
+	    return bundler
+	      .bundle()
+	      .pipe( source(config.src.scripts.dest) )
+	      .pipe( buffer() )
+	      .pipe( js.pipeline() )
+	      .pipe( gulp.dest('./public/') )
+	};
+
+	return bundle();
 });

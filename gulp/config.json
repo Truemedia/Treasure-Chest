@@ -8,7 +8,7 @@
 		},
 		"css":
 		{
-			"src": ["./app/base/themes/default/core/palette.scss"],
+			"src": ["./public/main.scss"],
 			"dest": "./css"
 		},
 		"default":
@@ -34,8 +34,8 @@
 		},
 		"scripts":
 		{
-			"src": "build.js",
-			"dest": "bundle.js"
+			"src": "./public/main.js",
+			"dest": "script.min.js"
 		},
 		"sprite":
 		{

@@ -1,6 +1,7 @@
 // Gulp core and plugins loader
 var gulp = require('gulp'),
 	gutil = require('gulp-util'),
+	lazypipe = require('lazypipe'),
 	$ = require('gulp-load-plugins')();
 
 // Command line help
