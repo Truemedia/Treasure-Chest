@@ -47,6 +47,11 @@
 				"dir": "maps/scraproom/"
 			}
 		},
+		"templates":
+		{
+			"src": "./public/packages/social/templates/partial.mustache",
+			"dest": "./dist"
+		},
 		"uncss":
 		{
 			"src":
