@@ -5,6 +5,7 @@
 !.chest/
 !gulp/
 !gulp/tasks/
+!gulp/pipes/
 
 # temp
 .coverdata/
