@@ -22,7 +22,7 @@ gulp.task('scripts', 'Compile all frontend scripts into a single file', function
 	{
 	    return bundler
 	      .bundle()
-	      .pipe( source(config.src.scripts.dest) )
+	      .pipe( source(config.tasks.scripts.dest) )
 	      .pipe( buffer() )
 	      .pipe( js.pipeline() )
 	      .pipe( gulp.dest('./public/') )
