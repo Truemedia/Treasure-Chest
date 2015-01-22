@@ -2,9 +2,11 @@
 var gulp = require('gulp'),
 	gutil = require('gulp-util'),
 	filelog = require('gulp-filelog');
-	browserify = require('browserify'),
-	source = require('vinyl-source-stream'),
-	buffer = require('vinyl-buffer');
+	browserify = require('browserify');
+
+// Browserify extras
+var es6ify = require('es6ify');
+var source = require('vinyl-source-stream');
 
 // Settings
 var config = require('./../config.json');
@@ -16,17 +18,10 @@ var js = require('./../pipes/js');
 gulp.task('scripts', 'Compile all frontend scripts into a single file', function()
 {
 	var sourcemaps = false;
-	var bundler = browserify({ entries: [config.tasks.scripts.src], debug: sourcemaps });
 
-    var bundle = function()
-	{
-	    return bundler
-	      .bundle()
-	      .pipe( source(config.tasks.scripts.dest) )
-	      .pipe( buffer() )
-	      .pipe( js.pipeline() )
-	      .pipe( gulp.dest('./public/') )
-	};
-
-	return bundle();
+	return browserify('./public/main.js')
+	.transform(es6ify)
+	.bundle()
+	.pipe(source('script.min.js'))
+	.pipe( gulp.dest('./public/') );
 });
