@@ -19,7 +19,8 @@ gulp.task('scripts', 'Compile all frontend scripts into a single file', function
 {
 	var sourcemaps = false;
 
-	return browserify('./public/main.js')
+	return browserify(es6ify.runtime)
+	.add('./public/main.js')
 	.transform(es6ify)
 	.bundle()
 	.pipe(source('script.min.js'))
